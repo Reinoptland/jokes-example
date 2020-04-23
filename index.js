@@ -80,12 +80,33 @@ function render(joke) {
     <html>
         <head>
             <title>Programming Jokes</title>
+            <style>
+                body {
+                    padding: 10vh 10vw;
+                }
+                h1 {
+                    text-align: center;
+                }
+
+                div {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                img {
+                    width: 25vw;
+                    padding: 5vh; 5vw;
+                } 
+            </style>
         </head>
         <body>
             <h1>${setup}</h1>
-            <marquee><h1>${punchline}</h1></marquee>
-            <img src="${img1}" />
-            <img src="${img2}" />
+            <h1><marquee>${punchline}</marquee></h1>
+            <div>
+                <img src="${img1}" />
+                <img src="${img2}" />
+            </div>
         </body>
     </html>
   `;
