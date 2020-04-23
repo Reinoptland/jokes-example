@@ -67,6 +67,45 @@ app.listen(
   onListen // callback runs when server starts
 );
 
+app.get("/", (request, response) => {
+  const page = `
+  <html>
+    <head>
+        <title>Programming Jokes</title>
+        <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+        <style>
+          body {
+            padding: 10vh 10vw;
+            background-color: #FABF00;
+            color: black;
+            font-family: 'VT323', monospace;
+            text-align: center;
+          }
+
+          a {
+            color: #2F9ACA;
+          }
+        </style>
+    </head>
+    <body>
+        <h1>Wanna hear a programming joke?</h1>
+        <h2>How would you describe yourself??</h4>
+        <h3><a href="/22/frontender">As rookie frontender</a></h3>
+        <h3><a href="/30/frontender">As an experienced frontender</a></h3>
+        <h3><a href="/22/backender">As a rookie backender</a></h3>
+        <h3><a href="/44/backender">As a salty backender</a></h3>
+        <h3><a href="/22/noob">Just starting to program</a></h3>
+        <h3><a href="/student/david">As your colleague David</a></h3>
+        <h3><a href="/student/matias">As your colleage Matias</a></h3>
+        <h3><a href="/student/houben">As your colleague Jeroen Houben</a></h3>
+        <h3><a href="/student/bruinsma">As tour colleague Jeroen Bruinsma</a></h3>
+        <h3><a href="/student/kelley">As your colleague Kelley</a></h3>
+    </body>
+  </html>
+  `;
+  response.send(page);
+});
+
 app.get("/student/:name", (request, response) => {
   let joke = selectJokeForStudent(request.params.name, jokes);
 
