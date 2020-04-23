@@ -85,6 +85,14 @@ app.get("/", (request, response) => {
           a {
             color: #2F9ACA;
           }
+
+          div {
+            margin: 2rem;
+          }
+
+          footer {
+            margin: 2rem;
+          }
         </style>
     </head>
     <body>
@@ -100,6 +108,15 @@ app.get("/", (request, response) => {
         <h3><a href="/student/houben">As your colleague Jeroen Houben</a></h3>
         <h3><a href="/student/bruinsma">As tour colleague Jeroen Bruinsma</a></h3>
         <h3><a href="/student/kelley">As your colleague Kelley</a></h3>
+
+        <div>
+          <a href="https://github.com/Reinoptland/jokes-example">📂Check out the source code on github📂</a>
+          <a href="https://github.githistory.xyz/Reinoptland/jokes-example/blob/master/index.js">⏳Scroll through the history on githistory⏳</a>
+        <div>
+
+        <footer>
+            Made with ❤️ in ❌❌❌
+        </footer>
     </body>
   </html>
   `;
