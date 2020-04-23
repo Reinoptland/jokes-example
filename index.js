@@ -42,3 +42,9 @@ app.listen(
   port, // TCP port where the server listens
   onListen // callback runs when server starts
 );
+
+app.get("/:age/:programmertype", (request, response) => {
+  console.log(request.params.age);
+  console.log(request.params.programmertype);
+  response.send("hello world");
+});
