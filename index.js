@@ -75,41 +75,54 @@ app.get("/:age/:programmertype", (request, response) => {
 });
 
 function render(joke) {
-  const { setup, punchline, img1, img2 } = joke;
   const page = `
     <html>
         <head>
             <title>Programming Jokes</title>
-            <style>
-                body {
-                    padding: 10vh 10vw;
-                }
-                h1 {
-                    text-align: center;
-                }
-
-                div {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                }
-
-                img {
-                    width: 25vw;
-                    padding: 5vh; 5vw;
-                } 
-            </style>
+            ${makeStyles()}
         </head>
         <body>
-            <h1>${setup}</h1>
-            <h1><marquee>${punchline}</marquee></h1>
-            <div>
-                <img src="${img1}" />
-                <img src="${img2}" />
-            </div>
+            ${displayJoke(joke)}
         </body>
     </html>
   `;
 
   return page;
+}
+
+function displayJoke(joke) {
+  const { setup, punchline, img1, img2 } = joke;
+
+  return `
+        <h1>${setup}</h1>
+        <h1><marquee>${punchline}</marquee></h1>
+        <div>
+            <img src="${img1}" />
+            <img src="${img2}" />
+        </div>
+    `;
+}
+
+function makeStyles() {
+  return `
+    <style>
+        body {
+            padding: 10vh 10vw;
+        }
+        h1 {
+            text-align: center;
+        }
+
+        div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        img {
+            width: 25vw;
+            padding: 5vh; 5vw;
+        } 
+    </style>
+`;
 }
