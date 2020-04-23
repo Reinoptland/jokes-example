@@ -44,7 +44,17 @@ app.listen(
 );
 
 app.get("/:age/:programmertype", (request, response) => {
-  console.log(request.params.age);
-  console.log(request.params.programmertype);
-  response.send("hello world");
+  const { age, programmertype } = request.params;
+
+  let joke;
+
+  if (programmertype === "frontender") {
+    joke = age > 25 ? jokes.ie : jokes.ui;
+  } else if (programmertype === "backender") {
+    joke = age > 30 ? jokes.java : jokes.sql;
+  } else {
+    joke = jokes.ifelse;
+  }
+
+  response.send(joke);
 });
