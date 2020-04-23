@@ -77,15 +77,7 @@ app.get("/student/:name", (request, response) => {
 app.get("/:age/:programmertype", (request, response) => {
   const { age, programmertype } = request.params;
 
-  let joke;
-
-  if (programmertype === "frontender") {
-    joke = age > 25 ? jokes.ie : jokes.ui;
-  } else if (programmertype === "backender") {
-    joke = age > 30 ? jokes.java : jokes.sql;
-  } else {
-    joke = jokes.ifelse;
-  }
+  let joke = selectJokeForAgeAndType(age, programmertype, jokes);
 
   const page = render(joke);
   response.send(page);
@@ -169,5 +161,15 @@ function selectJokeForStudent(name, jokes) {
 
     default:
       return jokes.ifelse;
+  }
+}
+
+function selectJokeForAgeAndType(age, programmertype, jokes) {
+  if (programmertype === "frontender") {
+    return age > 25 ? jokes.ie : jokes.ui;
+  } else if (programmertype === "backender") {
+    return age > 30 ? jokes.java : jokes.sql;
+  } else {
+    return jokes.ifelse;
   }
 }
