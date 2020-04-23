@@ -67,6 +67,13 @@ app.listen(
   onListen // callback runs when server starts
 );
 
+app.get("/student/:name", (request, response) => {
+  let joke = selectJokeForStudent(request.params.name, jokes);
+
+  const page = render(joke);
+  response.send(page);
+});
+
 app.get("/:age/:programmertype", (request, response) => {
   const { age, programmertype } = request.params;
 
@@ -141,4 +148,26 @@ function makeStyles(background, font) {
         } 
     </style>
 `;
+}
+
+function selectJokeForStudent(name, jokes) {
+  switch (name) {
+    case "david":
+      return jokes.ui;
+
+    case "matias":
+      return jokes.sql;
+
+    case "bruinsma":
+      return jokes.ie;
+
+    case "houben":
+      return jokes.java;
+
+    case "kelley":
+      return jokes.ifelse;
+
+    default:
+      return jokes.ifelse;
+  }
 }
