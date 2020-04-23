@@ -56,5 +56,17 @@ app.get("/:age/:programmertype", (request, response) => {
     joke = jokes.ifelse;
   }
 
-  response.send(joke);
+  const page = `
+    <html>
+        <head>
+            <title>Programming Jokes</title>
+        </head>
+        <body>
+            <h1>${joke.setup}</h1>
+            <h1>${joke.punchline}</h1>
+        </body>
+    </html>
+  `;
+
+  response.send(page);
 });
